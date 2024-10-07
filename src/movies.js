@@ -2,7 +2,7 @@
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
 // How could you "clean" a bit this array and make it unified (without duplicates)?
 function getAllDirectors(moviesArray) {
-    const listOfDirectors = moviesArray.map(movie => {movie.director});
+    const listOfDirectors = moviesArray.map(movie => movie.director);
     return listOfDirectors;
 } 
 /*     const orderedDirectors = moviesArray.filter((director, index) => {moviesArray.indexOf(director) === index}
@@ -18,7 +18,20 @@ function howManyMovies(moviesArray) {
 
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
-function scoresAverage(moviesArray) {}
+function scoresAverage(moviesArray) {
+    if (moviesArray.length === 0) {
+        return 0;
+    }
+   
+    const scoreAverage = moviesArray.reduce((acc, curr) => 
+        {if (typeof curr.score === "number") { 
+            return acc + curr.score;
+        }
+        return acc;
+      }, 0) / moviesArray.length;
+    return +(scoreAverage.toFixed(2));
+        
+ } 
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
 function dramaMoviesScore(moviesArray) {}
